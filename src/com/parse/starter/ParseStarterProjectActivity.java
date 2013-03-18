@@ -22,8 +22,26 @@ public class ParseStarterProjectActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
        	setContentView(R.layout.register);
-        Intent intent = new Intent(this, Register.class);
-        this.startActivity ( intent );
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            moveToHome();
+        } else {
+            moveToLogin();
+        }
 
     }
+
+    public void moveToLogin(){
+        Intent intent  = new Intent(this, Login.class);
+        startActivity(intent);
+    }
+
+    public void moveToHome(){
+        Intent intent = new Intent(this, Home.class);
+        startActivity(intent);
+    }
+
+
+
+
 }

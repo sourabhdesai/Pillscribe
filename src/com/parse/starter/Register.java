@@ -26,9 +26,10 @@ public class Register extends Activity {
     private String username;
     private String password;
     private String email;
-    Button register;
+    Button register,login;
     EditText username_string;
     EditText password_string;
+    EditText email_string;
 
 
     public void onCreate(Bundle savedInstanceState) {
@@ -41,17 +42,27 @@ public class Register extends Activity {
                     {
                         username_string = (EditText)findViewById(R.id.username);
                         password_string = (EditText)findViewById(R.id.password);
+                        email_string = (EditText)findViewById(R.id.email);
                         username=username_string.getText().toString();
                         password=password_string.getText().toString();
-                        register(username,password);
+                        email=email_string.getText().toString();
+                        registerParse(username,password,email);
                     }
                 });
+        login = (Button)findViewById(R.id.login);
+        login.setOnClickListener(new View.OnClickListener() {
+                        public void onClick(View view) {
+                               moveToLogin();
+                        }
+                });
+
     }
 
-    public void register(String set_username, String set_password){
+    public void registerParse(String set_username, String set_password, String set_email){
         ParseUser user = new ParseUser();
         user.setUsername(set_username);
         user.setPassword(set_password);
+        user.setEmail(set_email);
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
                 if (e == null) {
@@ -61,6 +72,9 @@ public class Register extends Activity {
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
+                    moveToHome();
+
+
                 } else {
                     // Sign up didn't succeed. Look at the ParseException
                     // to figure out what went wrong
@@ -68,4 +82,16 @@ public class Register extends Activity {
             }
         });
     }
+
+    public void moveToLogin(){
+        Intent intent  = new Intent(this, Login.class);
+        startActivity(intent);
+    }
+
+    public void moveToHome(){
+        Intent intent = new Intent(this, Home.class);
+        startActivity(intent);
+    }
+
+
 }
