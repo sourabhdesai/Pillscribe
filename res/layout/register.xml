@@ -1,0 +1,49 @@
+<!-- Login Form -->
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dip">
+    <!--  Username Label -->
+    <TextView android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:textColor="#372c24"
+              android:text="Username"/>
+    <EditText android:layout_width="fill_parent"
+              android:inputType="text"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="5dip"
+              android:layout_marginBottom="20dip"
+              android:singleLine="true" android:id="@+id/username"/>
+    <!--  Password Label -->
+    <TextView android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:textColor="#372c24"
+              android:text="Password"/>
+    <EditText android:layout_width="fill_parent"
+              android:inputType="textPassword"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="5dip"
+              android:singleLine="true"
+              android:password="true" android:id="@+id/password"/>
+    <!-- Login button -->
+    <Button android:id="@+id/register"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:text="Login"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            android:id="@+id/testusername" android:layout_gravity="center"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:id="@+id/testpassword" android:layout_gravity="center"/>
+    <!-- Link to Registration Screen -->
+
+</LinearLayout>
+        <!-- Login Form Ends -->
