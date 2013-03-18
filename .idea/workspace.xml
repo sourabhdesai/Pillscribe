@@ -31,9 +31,9 @@
     <ignored path="PillScribe.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/strings.xml" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1363565203046" ignored="false" />
-    <file path="/ParseStarterProjectActivity.java" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1363571014327" ignored="false" />
+    <file path="/ParseStarterProjectActivity.java" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1363571744302" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1363565457925" ignored="false" />
-    <file path="/Register.java" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1363571047917" ignored="false" />
+    <file path="/Register.java" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1363572059295" ignored="false" />
     <file path="/Dummy.txt" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1363565633039" ignored="false" />
     <file path="/register.xml" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1363566661843" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -95,19 +95,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ParseStarterProjectActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ParseStarterProjectActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/parse/starter/ParseStarterProjectActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="40" selection-start="779" selection-end="779" vertical-scroll-proportion="0.336">
+            <state line="27" column="44" selection-start="781" selection-end="781" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="strings.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="48" selection-start="169" selection-end="169" vertical-scroll-proportion="-3.0">
+            <state line="5" column="46" selection-start="169" selection-end="169" vertical-scroll-proportion="0.125">
               <folding />
             </state>
           </provider>
@@ -116,12 +116,12 @@
       <file leaf-file-name="Register.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/parse/starter/Register.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="28" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0">
+            <state line="57" column="64" selection-start="1923" selection-end="1923" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#917#1431#0" expanded="true" />
-                <element signature="e#1412#1413#0" expanded="true" />
-                <element signature="e#1663#2018#0" expanded="true" />
-                <element signature="e#2007#2008#0" expanded="true" />
+                <element signature="e#1009#1523#0" expanded="true" />
+                <element signature="e#1504#1505#0" expanded="true" />
+                <element signature="e#1755#2411#0" expanded="true" />
+                <element signature="e#2400#2401#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -133,7 +133,7 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="1" column="66" selection-start="33" selection-end="33" vertical-scroll-proportion="-0.3">
               <folding />
             </state>
           </provider>
@@ -160,7 +160,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="64" />
-    <option name="y" value="-4" />
+    <option name="y" value="-772" />
     <option name="width" value="1303" />
     <option name="height" value="773" />
   </component>
@@ -450,7 +450,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-4" width="1303" height="773" extended-state="6" />
+    <frame x="64" y="-772" width="1303" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988048" sideWeight="0.96620584" order="0" side_tool="false" content_ui="tabs" />
@@ -556,23 +556,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="48" selection-start="169" selection-end="169" vertical-scroll-proportion="-3.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/register.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/parse/starter/ParseApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="57" selection-start="650" selection-end="650" vertical-scroll-proportion="0.39800996">
@@ -582,19 +565,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/parse/starter/Register.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="28" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0">
+        <state line="57" column="64" selection-start="1923" selection-end="1923" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#917#1431#0" expanded="true" />
-            <element signature="e#1412#1413#0" expanded="true" />
-            <element signature="e#1663#2018#0" expanded="true" />
-            <element signature="e#2007#2008#0" expanded="true" />
+            <element signature="e#1009#1523#0" expanded="true" />
+            <element signature="e#1504#1505#0" expanded="true" />
+            <element signature="e#1755#2411#0" expanded="true" />
+            <element signature="e#2400#2401#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/parse/starter/ParseStarterProjectActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="40" selection-start="779" selection-end="779" vertical-scroll-proportion="0.336">
+        <state line="27" column="44" selection-start="781" selection-end="781" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/register.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="66" selection-start="33" selection-end="33" vertical-scroll-proportion="-0.3">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="46" selection-start="169" selection-end="169" vertical-scroll-proportion="0.125">
           <folding />
         </state>
       </provider>

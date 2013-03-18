@@ -1,12 +1,15 @@
 package com.parse.starter;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -52,7 +55,12 @@ public class Register extends Activity {
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
                 if (e == null) {
-                    // Hooray! Let them use the app now.
+                    //added a little notification at the bottom
+                    Context context = getApplicationContext();
+                    CharSequence text = "Registration Successful";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
                 } else {
                     // Sign up didn't succeed. Look at the ParseException
                     // to figure out what went wrong

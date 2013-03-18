@@ -21,7 +21,7 @@ public class ParseStarterProjectActivity extends Activity {
     /** Called when the activity is first created. */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-       	setContentView(R.layout.main);
+       	setContentView(R.layout.register);
         Intent intent = new Intent(this, Register.class);
         this.startActivity ( intent );
 
