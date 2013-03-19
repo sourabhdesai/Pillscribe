@@ -16,7 +16,7 @@ import com.parse.ParseUser;
  */
 public class Home extends Activity {
 
-    Button logout;
+    Button logout,addPrescription;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,22 +24,35 @@ public class Home extends Activity {
         logout=(Button)findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                logoutParse();
+                ParseUser.logOut();
                 moveToLogin();
             }
         });
+        addPrescription = (Button)findViewById(R.id.prescription);
+        addPrescription.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                moveToPrescription();
+            }
+        });
+
     }
 
 
-    public void logoutParse(){
-        ParseUser.logOut();
-    }
 
     public void moveToLogin(){
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
 
     }
+
+    public void moveToPrescription(){
+        Intent intent = new Intent(this,Prescription.class);
+        startActivity(intent);
+
+    }
+
+
 
 }
 
