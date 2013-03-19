@@ -6,13 +6,15 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.*;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,9 +26,12 @@ import com.parse.ParseUser;
 public class Prescription extends Activity implements LocationListener {
     EditText name,reason;
     Button add;
-    String prescription_name,prescription_sickness;
     LocationManager mLocationManager;
-
+    private String prescription_name,prescription_sickness;
+    private Time timeToTake;  //The time of the day they have to take it
+    private int frequencyOfIntake;  //The frequency (in days they have to take it).
+                                    // Example: a value of 0 indicates they will take it once at the specified time at that day.
+                                    //Example: a value of 2 indicates they will take it once every two days (every other day).
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,25 +45,31 @@ public class Prescription extends Activity implements LocationListener {
             public void onClick(View view) {
                 name = (EditText)findViewById(R.id.pName);
                 reason = (EditText)findViewById(R.id.pFor);
+                NumberPicker freqOfInWidget= (NumberPicker)  findViewById(R.id.numberPicker);
+                TimePicker timeTTWidget= (TimePicker) findViewById(R.id.timePicker);
+                frequencyOfIntake=freqOfInWidget.getValue();
+                timeToTake.hour=timeTTWidget.getCurrentHour();
+                timeToTake.minute=timeTTWidget.getCurrentMinute();
                 prescription_name = name.getText().toString();
                 prescription_sickness = reason.getText().toString();
-                parsePrescription(prescription_name,prescription_sickness);
+                parsePrescription(timeToTake, frequencyOfIntake, prescription_name,prescription_sickness);
                 getLocation();
-
             }
         });
 
     }
 
 
-    public void parsePrescription(String name, String sickness){
+    public void parsePrescription(Time timeTT, int freq, String drug, String sickness){
         ParseObject prescription = new ParseObject("Prescription");
         prescription.put("name",name);
         prescription.put("sickness",sickness);
         ParseUser current = ParseUser.getCurrentUser();
         prescription.put("user",current);
+        prescription.put("timeToTake",timeTT);
+        prescription.put("freqOfIntake",freq);
+        prescription.put("dateAdded",new Date());  //The date the user added the drug they have to take as a reminder
         prescription.saveInBackground();
-
     }
 
     public void parseOutbreak(String sickness, ParseGeoPoint point){

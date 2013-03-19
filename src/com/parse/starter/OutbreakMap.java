@@ -7,6 +7,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import com.parse.ParseGeoPoint;
 
 import java.util.Calendar;
@@ -21,11 +22,13 @@ import java.util.Calendar;
 
 public class OutbreakMap extends Activity implements LocationListener {
     LocationManager mLocationManager;
+    TextView locationText;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         setContentView(R.layout.main);
+        locationText=(TextView) findViewById(R.id.location);
 
         Location location = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if(location != null) {
@@ -33,6 +36,10 @@ public class OutbreakMap extends Activity implements LocationListener {
             //  otherwise wait for the update below
             //&& location.getTime() > Calendar.getInstance().getTimeInMillis() - 2 * 60 * 1000
             ParseGeoPoint point = new ParseGeoPoint(location.getLatitude(), location.getLongitude());
+            int lat= (int) point.getLatitude();
+            int longi= (int) point.getLongitude();
+            locationText.setText((String)locationText.getText()+longi+", "+lat);
+
         }
         else {
             mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
