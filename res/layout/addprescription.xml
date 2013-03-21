@@ -4,7 +4,7 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/scrollView" android:background="#ffffff">
+        android:id="@+id/scrollView" android:background="#000000">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="fill_parent"
@@ -33,19 +33,64 @@
             android:layout_height="wrap_content"
             android:text="Every"
             android:id="@+id/Every"/>
-    <NumberPicker
+    <HorizontalScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/numberPicker" android:layout_gravity="center" android:orientation="horizontal"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Days"
-            android:id="@+id/textView"/>
+            android:id="@+id/horizontalScrollView">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+            <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sunday"
+                    android:id="@+id/sunday" android:checked="false"/>
+            <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Monday"
+                    android:id="@+id/monday" android:checked="false"/>
+            <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tuesday"
+                    android:id="@+id/tuesday" android:checked="false"/>
+            <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Wednesday"
+                    android:id="@+id/wednesday"/>
+            <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thursday"
+                    android:id="@+id/thursday"/>
+            <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Friday"
+                    android:id="@+id/friday"/>
+            <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Saturday"
+                    android:id="@+id/saturday"/>
+        </LinearLayout>
+    </HorizontalScrollView>
     <TimePicker
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/timePicker" android:layout_gravity="center"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notes"
+            android:id="@+id/textView"/>
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/notes"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

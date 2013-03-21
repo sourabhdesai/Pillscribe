@@ -11,13 +11,15 @@
     <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Logout"
-            android:id="@+id/logout"/>
+            android:text="Add Prescription"
+            android:id="@+id/prescription" android:layout_gravity="left|center_vertical"/>
+    <Button android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="See Trends"
+            android:id="@+id/trendsButton" android:layout_gravity="left|center_vertical"/>
     <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Add Prescription"
-            android:id="@+id/prescription" android:layout_gravity="left|center_vertical"/>
+            android:text="Logout"
+            android:id="@+id/logout"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

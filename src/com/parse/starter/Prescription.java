@@ -29,9 +29,6 @@ public class Prescription extends Activity implements LocationListener {
     LocationManager mLocationManager;
     private String prescription_name,prescription_sickness;
     private Time timeToTake;  //The time of the day they have to take it
-    private int frequencyOfIntake;  //The frequency (in days they have to take it).
-                                    // Example: a value of 0 indicates they will take it once at the specified time at that day.
-                                    //Example: a value of 2 indicates they will take it once every two days (every other day).
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,14 +42,20 @@ public class Prescription extends Activity implements LocationListener {
             public void onClick(View view) {
                 name = (EditText)findViewById(R.id.pName);
                 reason = (EditText)findViewById(R.id.pFor);
-                NumberPicker freqOfInWidget= (NumberPicker)  findViewById(R.id.numberPicker);
                 TimePicker timeTTWidget= (TimePicker) findViewById(R.id.timePicker);
-                frequencyOfIntake=freqOfInWidget.getValue();
+                CheckBox[] daysOfWeekToTake= {(CheckBox) findViewById(R.id.sunday),
+                        (CheckBox) findViewById(R.id.monday),
+                        (CheckBox) findViewById(R.id.tuesday),
+                        (CheckBox) findViewById(R.id.wednesday),
+                        (CheckBox) findViewById(R.id.thursday),
+                        (CheckBox) findViewById(R.id.friday),
+                        (CheckBox) findViewById(R.id.saturday),};
+
                 timeToTake.hour=timeTTWidget.getCurrentHour();
                 timeToTake.minute=timeTTWidget.getCurrentMinute();
                 prescription_name = name.getText().toString();
                 prescription_sickness = reason.getText().toString();
-                parsePrescription(timeToTake, frequencyOfIntake, prescription_name,prescription_sickness);
+                parsePrescription(timeToTake, daysOfWeekToTake, prescription_name,prescription_sickness);
                 getLocation();
             }
         });
@@ -60,7 +63,7 @@ public class Prescription extends Activity implements LocationListener {
     }
 
 
-    public void parsePrescription(Time timeTT, int freq, String drug, String sickness){
+    public void parsePrescription(Time timeTT, CheckBox[] freq, String drug, String sickness){
         ParseObject prescription = new ParseObject("Prescription");
         prescription.put("name",name);
         prescription.put("sickness",sickness);

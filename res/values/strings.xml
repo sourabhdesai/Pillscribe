@@ -2,4 +2,14 @@
 <resources>
     <string name="hello">Welcome to PillScribe!</string>
     <string name="app_name">PillScribe</string>
+
+    <string-array name="week">
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+    </string-array>
 </resources>
