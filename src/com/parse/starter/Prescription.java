@@ -2,6 +2,7 @@ package com.parse.starter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -14,6 +15,7 @@ import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import java.lang.reflect.Array;
 import java.util.Date;
 
 /**
@@ -27,13 +29,16 @@ public class Prescription extends Activity implements LocationListener {
     EditText name,reason;
     Button add;
     LocationManager mLocationManager;
-    private String prescription_name,prescription_sickness;
-    private Time timeToTake;  //The time of the day they have to take it
+    private static String prescription_name,prescription_sickness;
+    TimePicker timeTTWidget;
+    int hour;
+    int minute;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addprescription);
         add = (Button)findViewById(R.id.pAdd);
+        timeTTWidget= (TimePicker) findViewById(R.id.timePicker);
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
 
@@ -41,36 +46,43 @@ public class Prescription extends Activity implements LocationListener {
 
             public void onClick(View view) {
                 name = (EditText)findViewById(R.id.pName);
-                reason = (EditText)findViewById(R.id.pFor);
-                TimePicker timeTTWidget= (TimePicker) findViewById(R.id.timePicker);
-                CheckBox[] daysOfWeekToTake= {(CheckBox) findViewById(R.id.sunday),
-                        (CheckBox) findViewById(R.id.monday),
-                        (CheckBox) findViewById(R.id.tuesday),
-                        (CheckBox) findViewById(R.id.wednesday),
-                        (CheckBox) findViewById(R.id.thursday),
-                        (CheckBox) findViewById(R.id.friday),
-                        (CheckBox) findViewById(R.id.saturday),};
+                hour=timeTTWidget.getCurrentHour();  //returns int from 0-23 (24 hour clock), no need to worry about am or pm
+                minute=timeTTWidget.getCurrentMinute();
 
-                timeToTake.hour=timeTTWidget.getCurrentHour();
-                timeToTake.minute=timeTTWidget.getCurrentMinute();
+                reason = (EditText)findViewById(R.id.pFor);
+                boolean[] daysOfWeekToTake= {((CheckBox) findViewById(R.id.sunday)).isChecked(),
+                        ((CheckBox) findViewById(R.id.monday)).isChecked(),
+                        ((CheckBox) findViewById(R.id.tuesday)).isChecked(),
+                        ((CheckBox) findViewById(R.id.wednesday)).isChecked(),
+                        ((CheckBox) findViewById(R.id.thursday)).isChecked(),
+                        ((CheckBox) findViewById(R.id.friday)).isChecked(),
+                        ((CheckBox) findViewById(R.id.saturday)).isChecked(),};
+
                 prescription_name = name.getText().toString();
                 prescription_sickness = reason.getText().toString();
-                parsePrescription(timeToTake, daysOfWeekToTake, prescription_name,prescription_sickness);
+                EditText notesWidget= (EditText) findViewById(R.id.notes);
+                String notes= notesWidget.getText().toString();
+                String daysString= booleanArrToStr(daysOfWeekToTake);   //For some reason, cant store a boolean[] in a ParseObject, so I created a method to convert boolean[] to a string of 0s and 1s
+                parsePrescription(daysString, prescription_name,prescription_sickness, notes,hour,minute);
                 getLocation();
+                finish();
+
             }
         });
 
     }
 
 
-    public void parsePrescription(Time timeTT, CheckBox[] freq, String drug, String sickness){
+    public void parsePrescription(String daysOfWeekTT, String drug, String sickness, String notes,int hourTT,int minuteTT){
         ParseObject prescription = new ParseObject("Prescription");
-        prescription.put("name",name);
+        prescription.put("name",drug);
         prescription.put("sickness",sickness);
         ParseUser current = ParseUser.getCurrentUser();
         prescription.put("user",current);
-        prescription.put("timeToTake",timeTT);
-        prescription.put("freqOfIntake",freq);
+        prescription.put("hourToTake",hourTT);
+        prescription.put("minuteToTake",minuteTT);
+        prescription.put("DaysToTake",daysOfWeekTT);  //A String of a boolean[] of size 7. An array {0,1,1,1,0,0,0} means the drug will be taken every mon., tues., wed. Use Boolean.parseBoolean(String s)
+        prescription.put("Notes",notes);
         prescription.put("dateAdded",new Date());  //The date the user added the drug they have to take as a reminder
         prescription.saveInBackground();
     }
@@ -106,6 +118,30 @@ public class Prescription extends Activity implements LocationListener {
             mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
         }
 
+    }
+
+    public String booleanArrToStr(boolean[] b)	{ //takes a boolean[] and returns a string of corresponding 0's and 1's
+        String str="";
+        for (int i=0; i<b.length; i++)	{
+            if (b[i])	{
+                str+=1;
+            } else	{
+                str+=0;
+            }
+        }
+        return str;
+    }
+
+    public boolean[] StrtoBoolArr (String s)	{ //takes a string of 0's and 1's and returns a corresponding boolean[]
+        boolean[] boolArr=new boolean[s.length()];
+        for(int i=0; i<s.length(); i++)	{
+            if(s.charAt(i)=='1')	{
+                boolArr[i]=true;
+            } else	{
+                boolArr[i]=false;
+            }
+        }
+        return boolArr;
     }
 
 
