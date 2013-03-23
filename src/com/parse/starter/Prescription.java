@@ -1,9 +1,6 @@
 package com.parse.starter;
 
-import android.app.Activity;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
+import android.app.*;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
@@ -19,6 +16,7 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import java.lang.reflect.Array;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -44,7 +42,6 @@ public class Prescription extends Activity implements LocationListener {
         add = (Button)findViewById(R.id.pAdd);
         timeTTWidget= (TimePicker) findViewById(R.id.timePicker);
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
 
 
         add.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +91,7 @@ public class Prescription extends Activity implements LocationListener {
         boolean [] check = StrtoBoolArr(daysOfWeekTT);
         for(int i = 0; i < check.length; i++){
             if(check[i] == true)
-                scheduleLocalNotification("Time to take: "+drug,30);
+                scheduleLocalNotification("Time to take: "+drug,12000);
 
         }
 
@@ -168,16 +165,15 @@ public class Prescription extends Activity implements LocationListener {
         // set intent so it does not start a new activity
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
                 | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        PendingIntent intent = PendingIntent.getActivity(context, 0,
-                notificationIntent, 0);
+        PendingIntent intent = PendingIntent.getActivity(context, 0,notificationIntent, 0);
         Notification notification = new Notification(R.drawable.ic_launcher,text,when);
         notification.setLatestEventInfo(context, "PillScribe", text, intent);
         notification.flags |= Notification.FLAG_AUTO_CANCEL;
         notification.when = when;
         notificationManager.notify(notificationId, notification);
+
         notificationId++;
     }
-
 
 
 

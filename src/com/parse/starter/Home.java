@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import com.parse.ParseUser;
 
 /**
@@ -17,6 +18,7 @@ import com.parse.ParseUser;
 public class Home extends Activity {
 
     Button logout,addPrescription;
+    TextView location;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,9 @@ public class Home extends Activity {
                 moveToPrescription();
             }
         });
+        location = (TextView)findViewById(R.id.location);
+
+
 
     }
 
