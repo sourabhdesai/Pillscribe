@@ -1,6 +1,9 @@
 package com.parse.starter;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
@@ -33,6 +36,7 @@ public class Prescription extends Activity implements LocationListener {
     TimePicker timeTTWidget;
     int hour;
     int minute;
+    int notificationId = 0;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +44,7 @@ public class Prescription extends Activity implements LocationListener {
         add = (Button)findViewById(R.id.pAdd);
         timeTTWidget= (TimePicker) findViewById(R.id.timePicker);
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
 
 
         add.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +69,7 @@ public class Prescription extends Activity implements LocationListener {
                 String notes= notesWidget.getText().toString();
                 String daysString= booleanArrToStr(daysOfWeekToTake);   //For some reason, cant store a boolean[] in a ParseObject, so I created a method to convert boolean[] to a string of 0s and 1s
                 parsePrescription(daysString, prescription_name,prescription_sickness, notes,hour,minute);
+
                 getLocation();
                 finish();
 
@@ -85,6 +91,13 @@ public class Prescription extends Activity implements LocationListener {
         prescription.put("Notes",notes);
         prescription.put("dateAdded",new Date());  //The date the user added the drug they have to take as a reminder
         prescription.saveInBackground();
+        boolean [] check = StrtoBoolArr(daysOfWeekTT);
+        for(int i = 0; i < check.length; i++){
+            if(check[i] == true)
+                scheduleLocalNotification("Time to take: "+drug,30);
+
+        }
+
     }
 
     public void parseOutbreak(String sickness, ParseGeoPoint point){
@@ -143,6 +156,28 @@ public class Prescription extends Activity implements LocationListener {
         }
         return boolArr;
     }
+
+    public void scheduleLocalNotification(String text, int seconds)
+    {
+        Context context = getApplicationContext();
+        long when = System.currentTimeMillis() + seconds * 10;
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        Intent notificationIntent = new Intent(context, Home.class);
+
+        // set intent so it does not start a new activity
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent intent = PendingIntent.getActivity(context, 0,
+                notificationIntent, 0);
+        Notification notification = new Notification(R.drawable.ic_launcher,text,when);
+        notification.setLatestEventInfo(context, "PillScribe", text, intent);
+        notification.flags |= Notification.FLAG_AUTO_CANCEL;
+        notification.when = when;
+        notificationManager.notify(notificationId, notification);
+        notificationId++;
+    }
+
 
 
 
