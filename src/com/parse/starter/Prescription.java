@@ -3,6 +3,7 @@ package com.parse.starter;
 import android.app.*;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -26,7 +27,7 @@ import java.util.Date;
  * Time: 5:12 PM
  * To change this template use File | Settings | File Templates.
  */
-public class Prescription extends Activity implements LocationListener {
+public class Prescription extends Activity {
     EditText name,reason;
     Button add;
     LocationManager mLocationManager;
@@ -35,6 +36,8 @@ public class Prescription extends Activity implements LocationListener {
     int hour;
     int minute;
     int notificationId = 0;
+    double latitude, longitude;
+    String provider;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +45,11 @@ public class Prescription extends Activity implements LocationListener {
         add = (Button)findViewById(R.id.pAdd);
         timeTTWidget= (TimePicker) findViewById(R.id.timePicker);
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
+        Criteria criteria = new Criteria();
+        provider = mLocationManager.getBestProvider(criteria, false);
+        Location location = mLocationManager.getLastKnownLocation(provider);
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
 
         add.setOnClickListener(new View.OnClickListener() {
 
@@ -66,8 +73,9 @@ public class Prescription extends Activity implements LocationListener {
                 String notes= notesWidget.getText().toString();
                 String daysString= booleanArrToStr(daysOfWeekToTake);   //For some reason, cant store a boolean[] in a ParseObject, so I created a method to convert boolean[] to a string of 0s and 1s
                 parsePrescription(daysString, prescription_name,prescription_sickness, notes,hour,minute);
+                parseOutbreak(prescription_sickness,latitude, longitude);
 
-                getLocation();
+
                 finish();
 
             }
@@ -97,38 +105,15 @@ public class Prescription extends Activity implements LocationListener {
 
     }
 
-    public void parseOutbreak(String sickness, ParseGeoPoint point){
+    public void parseOutbreak(String sickness, double latitude, double longitude){
         ParseObject outbreak = new ParseObject("Outbreak");
+        ParseGeoPoint point = new ParseGeoPoint(latitude, longitude);
         outbreak.put("sickness", sickness);
         outbreak.put("location",point);
         outbreak.saveInBackground();
 
     }
-    public void onLocationChanged(Location location) {
-        if (location != null) {
-            Log.v("Location Changed", location.getLatitude() + " and " + location.getLongitude());
-            mLocationManager.removeUpdates(this);
-        }
-    }
 
-    public void getLocation(){
-        mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        Location location = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        if(location == null){
-            location = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        }
-        if(location != null) {
-            // Do something with the recent location fix
-            //  otherwise wait for the update below
-            //&& location.getTime() > Calendar.getInstance().getTimeInMillis() - 2 * 60 * 1000
-            ParseGeoPoint point = new ParseGeoPoint(location.getLatitude(), location.getLongitude());
-            parseOutbreak(prescription_sickness,point);
-        }
-        else {
-            mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-        }
-
-    }
 
     public String booleanArrToStr(boolean[] b)	{ //takes a boolean[] and returns a string of corresponding 0's and 1's
         String str="";
@@ -177,9 +162,6 @@ public class Prescription extends Activity implements LocationListener {
 
 
 
-    // Required functions
-    public void onProviderDisabled(String arg0) {}
-    public void onProviderEnabled(String arg0) {}
-    public void onStatusChanged(String arg0, int arg1, Bundle arg2) {}
+
 
 }

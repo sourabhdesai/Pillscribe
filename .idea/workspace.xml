@@ -34,12 +34,12 @@
     <file path="/ParseStarterProjectActivity.java" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1363618660879" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1364077534248" ignored="false" />
     <file path="/Register.java" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1363618015749" ignored="false" />
-    <file path="/Dummy.txt" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1363644774468" ignored="false" />
+    <file path="/Dummy.txt" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1364083193247" ignored="false" />
     <file path="/register.xml" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1363616625950" ignored="false" />
     <file path="/Login.java" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1363618904938" ignored="false" />
-    <file path="/Home.java" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1364080104327" ignored="false" />
-    <file path="/OutbreakMap.java" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1363662924382" ignored="false" />
-    <file path="/Prescription.java" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1364080485931" ignored="false" />
+    <file path="/Home.java" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1364085028267" ignored="false" />
+    <file path="/OutbreakMap.java" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1364085127319" ignored="false" />
+    <file path="/Prescription.java" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1364085729206" ignored="false" />
     <file path="$PROJECT_DIR$/gen/com/parse/starter/R.java" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1364077883179" ignored="false" />
     <file path="$PROJECT_DIR$/gen/com/parse/starter/BuildConfig.java" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1364077883179" ignored="false" />
     <file path="/addprescription.xml" changelist="87310aff-f8fc-4a5b-b1c7-c78a4b9aa2aa" time="1364078315405" ignored="false" />
@@ -110,8 +110,13 @@
       <file leaf-file-name="Home.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/parse/starter/Home.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="0" selection-start="1175" selection-end="1175" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="36" column="36" selection-start="1102" selection-end="1102" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#991#1126#0" expanded="true" />
+                <element signature="e#1115#1116#0" expanded="true" />
+                <element signature="e#1291#1448#0" expanded="true" />
+                <element signature="e#1437#1438#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -137,13 +142,24 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="OutbreakMap.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/parse/starter/OutbreakMap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="94" column="60" selection-start="3121" selection-end="3121" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Prescription.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/parse/starter/Prescription.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="173" column="8" selection-start="7191" selection-end="7191" vertical-scroll-proportion="0.72875816">
+            <state line="37" column="74" selection-start="1003" selection-end="1003" vertical-scroll-proportion="0.4855196">
               <folding>
-                <element signature="e#1382#2983#0" expanded="true" />
-                <element signature="e#2972#2973#0" expanded="true" />
+                <element signature="e#1719#3364#0" expanded="true" />
+                <element signature="e#3353#3354#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -161,12 +177,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OutbreakMap.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/parse/starter/OutbreakMap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="84" selection-start="1542" selection-end="1542" vertical-scroll-proportion="0.0">
+      <file leaf-file-name="location.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/location.xml">
+          <provider editor-type-id="text-editor">
+            <state line="56" column="15" selection-start="2021" selection-end="2021" vertical-scroll-proportion="-33.6">
               <folding />
             </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
@@ -180,13 +199,11 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/res/layout/register.xml" />
         <option value="$PROJECT_DIR$/src/com/parse/starter/Register.java" />
         <option value="$PROJECT_DIR$/src/com/parse/starter/ParseStarterProjectActivity.java" />
         <option value="$PROJECT_DIR$/res/layout/login.xml" />
         <option value="$PROJECT_DIR$/src/com/parse/starter/Login.java" />
         <option value="$PROJECT_DIR$/res/layout/AddPrescription.xml" />
-        <option value="$PROJECT_DIR$/src/com/parse/starter/OutbreakMap.java" />
         <option value="$PROJECT_DIR$/src/com/parse/starter/drugObject.java" />
         <option value="$PROJECT_DIR$/res/values/arrays.xml" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
@@ -194,14 +211,16 @@
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/res/layout/addprescription.xml" />
         <option value="$PROJECT_DIR$/res/layout/main.xml" />
+        <option value="$PROJECT_DIR$/res/layout/location.xml" />
         <option value="$PROJECT_DIR$/src/com/parse/starter/Home.java" />
+        <option value="$PROJECT_DIR$/src/com/parse/starter/OutbreakMap.java" />
         <option value="$PROJECT_DIR$/src/com/parse/starter/Prescription.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1430" />
-    <option name="y" value="764" />
+    <option name="x" value="64" />
+    <option name="y" value="-4" />
     <option name="width" value="1303" />
     <option name="height" value="773" />
   </component>
@@ -514,33 +533,33 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1430" y="764" width="1303" height="773" extended-state="6" />
-    <editor active="true" />
+    <frame x="64" y="-4" width="1303" height="773" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35458168" sideWeight="0.96159756" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35458168" sideWeight="0.96159756" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988048" sideWeight="0.9447005" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988048" sideWeight="0.9447005" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.52908367" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.038402457" sideWeight="0.16573705" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.46533865" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32872504" sideWeight="0.4494024" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.019969279" sideWeight="0.8924303" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32872504" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19601594" sideWeight="0.96159756" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.038402457" sideWeight="0.85258967" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.038402457" sideWeight="0.8286853" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -669,16 +688,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/parse/starter/OutbreakMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="84" selection-start="1542" selection-end="1542" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/addprescription.xml">
       <provider editor-type-id="text-editor">
         <state line="63" column="51" selection-start="2879" selection-end="2879" vertical-scroll-proportion="-1.76">
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+      <provider editor-type-id="text-editor">
+        <state line="19" column="90" selection-start="922" selection-end="922" vertical-scroll-proportion="-11.4">
           <folding />
         </state>
       </provider>
@@ -693,9 +715,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+    <entry file="file://$PROJECT_DIR$/res/layout/location.xml">
       <provider editor-type-id="text-editor">
-        <state line="19" column="90" selection-start="922" selection-end="922" vertical-scroll-proportion="-11.4">
+        <state line="56" column="15" selection-start="2021" selection-end="2021" vertical-scroll-proportion="-33.6">
           <folding />
         </state>
       </provider>
@@ -705,17 +727,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/parse/starter/Home.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="1175" selection-end="1175" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="36" column="36" selection-start="1102" selection-end="1102" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#991#1126#0" expanded="true" />
+            <element signature="e#1115#1116#0" expanded="true" />
+            <element signature="e#1291#1448#0" expanded="true" />
+            <element signature="e#1437#1438#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parse/starter/OutbreakMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="60" selection-start="3121" selection-end="3121" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/parse/starter/Prescription.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="173" column="8" selection-start="7191" selection-end="7191" vertical-scroll-proportion="0.72875816">
+        <state line="37" column="74" selection-start="1003" selection-end="1003" vertical-scroll-proportion="0.4855196">
           <folding>
-            <element signature="e#1382#2983#0" expanded="true" />
-            <element signature="e#2972#2973#0" expanded="true" />
+            <element signature="e#1719#3364#0" expanded="true" />
+            <element signature="e#3353#3354#0" expanded="true" />
           </folding>
         </state>
       </provider>

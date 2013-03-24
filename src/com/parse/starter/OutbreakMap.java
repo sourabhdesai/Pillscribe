@@ -2,59 +2,98 @@ package com.parse.starter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
-import com.parse.ParseGeoPoint;
-
-import java.util.Calendar;
-
-/**
- * Created with IntelliJ IDEA.
- * User: neel
- * Date: 3/18/13
- * Time: 4:58 PM
- * To change this template use File | Settings | File Templates.
- */
+import android.widget.Toast;
+import com.parse.starter.R;
 
 public class OutbreakMap extends Activity implements LocationListener {
-    LocationManager mLocationManager;
-    TextView locationText;
+    private TextView latituteField;
+    private TextView longitudeField;
+    private LocationManager locationManager;
+    private String provider;
 
+
+    /** Called when the activity is first created. */
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        setContentView(R.layout.main);
-        locationText=(TextView) findViewById(R.id.location);
+        setContentView(R.layout.location);
+        latituteField = (TextView) findViewById(R.id.TextView02);
+        longitudeField = (TextView) findViewById(R.id.TextView04);
 
-        Location location = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        if(location != null) {
-            // Do something with the recent location fix
-            //  otherwise wait for the update below
-            //&& location.getTime() > Calendar.getInstance().getTimeInMillis() - 2 * 60 * 1000
-            ParseGeoPoint point = new ParseGeoPoint(location.getLatitude(), location.getLongitude());
-            int lat= (int) point.getLatitude();
-            int longi= (int) point.getLongitude();
-            locationText.setText((String)locationText.getText()+longi+", "+lat);
+        // Get the location manager
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        // Define the criteria how to select the locatioin provider -> use
+        // default
+        Criteria criteria = new Criteria();
+        provider = locationManager.getBestProvider(criteria, false);
+        Location location = locationManager.getLastKnownLocation(provider);
 
-        }
-        else {
-            mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-        }
-    }
-
-    public void onLocationChanged(Location location) {
+        // Initialize the location fields
         if (location != null) {
-            Log.v("Location Changed", location.getLatitude() + " and " + location.getLongitude());
-            mLocationManager.removeUpdates(this);
+            System.out.println("Provider " + provider + " has been selected.");
+            onLocationChanged(location);
+        } else {
+            latituteField.setText("Location not available");
+            longitudeField.setText("Location not available");
         }
+        moveToPrescription();
+
     }
 
-    // Required functions
-    public void onProviderDisabled(String arg0) {}
-    public void onProviderEnabled(String arg0) {}
-    public void onStatusChanged(String arg0, int arg1, Bundle arg2) {}
+    /* Request updates at startup */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        locationManager.requestLocationUpdates(provider, 400, 1, this);
+    }
+
+    /* Remove the locationlistener updates when Activity is paused */
+    @Override
+    protected void onPause() {
+        super.onPause();
+        locationManager.removeUpdates(this);
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        int lat = (int) (location.getLatitude());
+        int lng = (int) (location.getLongitude());
+        latituteField.setText(String.valueOf(lat));
+        longitudeField.setText(String.valueOf(lng));
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+        Toast.makeText(this, "Enabled new provider " + provider,
+                Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+        Toast.makeText(this, "Disabled provider " + provider,
+                Toast.LENGTH_SHORT).show();
+    }
+
+    public void moveToPrescription(){
+        Intent intent = new Intent(this,Prescription.class);
+        intent.putExtra("latitude",""+latituteField);
+        intent.putExtra("longitude",""+longitudeField);
+        startActivity(intent);
+
+    }
 }

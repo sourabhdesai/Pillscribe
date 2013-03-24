@@ -17,7 +17,7 @@ import com.parse.ParseUser;
  */
 public class Home extends Activity {
 
-    Button logout,addPrescription;
+    Button logout,addPrescription,trendsButton;
     TextView location;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -34,10 +34,18 @@ public class Home extends Activity {
         addPrescription.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                moveToPrescription();
+                moveToOutbreakMap();
             }
         });
         location = (TextView)findViewById(R.id.location);
+        trendsButton = (Button)findViewById(R.id.trendsButton);
+        trendsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                moveToOutbreakMap();
+
+            }
+        });
 
 
 
@@ -56,6 +64,14 @@ public class Home extends Activity {
         startActivity(intent);
 
     }
+
+    public void moveToOutbreakMap(){
+        Intent intent = new Intent(this,OutbreakMap.class);
+        startActivity(intent);
+
+    }
+
+
 
 
 
