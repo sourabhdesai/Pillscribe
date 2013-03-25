@@ -18,6 +18,11 @@
     <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:text="My Prescriptions"
+            android:id="@+id/myprescriptions" android:layout_gravity="left|center_vertical"/>
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:text="Logout"
             android:id="@+id/logout"/>
     <TextView
