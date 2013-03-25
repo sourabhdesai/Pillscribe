@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 import com.parse.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -22,18 +24,34 @@ public class MyPrescriptions extends Activity {
     public ListView prescriptions;
     public String [] names;
     public List<ParseObject> pr;
+    public ArrayList<String> pList;
+    public ArrayAdapter<String> pListAdapter;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myprescriptions);
+
+        //Set up the listview
+        pList = new ArrayList<String>();
+        //Create and populate an ArrayList of objects from parse
+        pListAdapter =  new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
+        ListView prescriptions = (ListView) findViewById(R.id.mylist);
+        prescriptions.setAdapter(pListAdapter);
         ParseUser currentUser = ParseUser.getCurrentUser();
         ParseQuery query = new ParseQuery("Prescription");
         query.whereEqualTo("user",currentUser);
         query.include("user");
         query.findInBackground(new FindCallback() {
-            public void done(List<ParseObject> prescriptionList, ParseException e) {
-                for(ParseObject prescription : prescriptionList)     {
-                     equals()
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null) {
+                    //Toast.makeText(getApplicationContext(), objects.toString(), Toast.LENGTH_LONG).show();
+                    for (int i = 0; i < objects.size(); i++) {
+                        Object object = objects.get(i);
+                        String name = ((ParseObject) object).getString("name").toString();
+                        pListAdapter.add(name);
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
                 }
 
 
@@ -42,10 +60,8 @@ public class MyPrescriptions extends Activity {
 
         });
 
-        ListView prescriptions = (ListView) findViewById(R.id.mylist);
-        String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-                "Linux", "OS/2" };
+
+
 
 // Define a new Adapter
 // First parameter - Context
@@ -53,11 +69,5 @@ public class MyPrescriptions extends Activity {
 // Third parameter - ID of the TextView to which the data is written
 // Forth - the Array of data
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, names);
-
-
-// Assign adapter to ListView
-       prescriptions.setAdapter(adapter);
     }
 }
