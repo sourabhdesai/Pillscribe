@@ -8,6 +8,7 @@ import android.widget.ListView;
 import com.parse.*;
 
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,6 +20,8 @@ import java.util.List;
 public class MyPrescriptions extends Activity {
 
     public ListView prescriptions;
+    public String [] names;
+    public List<ParseObject> pr;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,12 +29,19 @@ public class MyPrescriptions extends Activity {
         ParseUser currentUser = ParseUser.getCurrentUser();
         ParseQuery query = new ParseQuery("Prescription");
         query.whereEqualTo("user",currentUser);
-
+        query.include("user");
         query.findInBackground(new FindCallback() {
             public void done(List<ParseObject> prescriptionList, ParseException e) {
-                // commentList now has the comments for myPost
-            }
+                for(ParseObject prescription : prescriptionList)     {
+                     equals()
+                }
+
+
+
+                 }
+
         });
+
         ListView prescriptions = (ListView) findViewById(R.id.mylist);
         String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
                 "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
@@ -44,7 +54,7 @@ public class MyPrescriptions extends Activity {
 // Forth - the Array of data
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, values);
+                android.R.layout.simple_list_item_1, android.R.id.text1, names);
 
 
 // Assign adapter to ListView
