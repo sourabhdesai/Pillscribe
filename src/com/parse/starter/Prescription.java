@@ -8,6 +8,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.preference.MultiSelectListPreference;
 import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
@@ -17,8 +18,10 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * Created with IntelliJ IDEA.
@@ -98,8 +101,8 @@ public class Prescription extends Activity {
         prescription.saveInBackground();
         boolean [] check = StrtoBoolArr(daysOfWeekTT);
         for(int i = 0; i < check.length; i++){
-            if(check[i] == true)
-                scheduleLocalNotification("Time to take: "+drug,12000);
+            if(check[i])
+                scheduleLocalNotification(drug,hourTT,minuteTT,i);
 
         }
 
@@ -139,29 +142,37 @@ public class Prescription extends Activity {
         return boolArr;
     }
 
-    public void scheduleLocalNotification(String text, int seconds)
+    public void scheduleLocalNotification(String name, int hour,int minute, int day)
     {
-        Context context = getApplicationContext();
-        long when = System.currentTimeMillis() + seconds * 10;
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+      /*Good tutorial on AlarmManager at http://code4reference.com/2012/07/tutorial-on-android-alarmmanager/
+        prescription.put("name",drug);
+        prescription.put("hourToTake",hourTT);
+        prescription.put("minuteToTake",minuteTT);
+        prescription.put("DaysToTake",daysOfWeekTT);
+        */
+       /*
+        AlarmManager alarmMgr = (AlarmManager)getSystemService(ALARM_SERVICE);
+            SimpleDateFormat dayFormatter = new SimpleDateFormat("yyyy-M-d H:m");
+            final Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY,hour);
+            calendar.set(Calendar.MINUTE,minute);
+            calendar.set(Calendar.DAY_OF_WEEK, day+1);  //day+1 because our format for days of week is one less than the format for days of week in cal.
 
-        Intent notificationIntent = new Intent(context, Home.class);
+            Date today = new Date();
 
-        // set intent so it does not start a new activity
-        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
-                | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        PendingIntent intent = PendingIntent.getActivity(context, 0,notificationIntent, 0);
-        Notification notification = new Notification(R.drawable.ic_launcher,text,when);
-        notification.setLatestEventInfo(context, "PillScribe", text, intent);
-        notification.flags |= Notification.FLAG_AUTO_CANCEL;
-        notification.when = when;
-        notificationManager.notify(notificationId, notification);
-
-        notificationId++;
-    }
-
-
-
-
+            calendar.setTime(today);
+            String scheduledStartDate = calendar.get(Calendar.YEAR) + "-" +
+                    (calendar.get(Calendar.MONTH)+1) + "-" +
+                    calendar.get(Calendar.DAY_OF_MONTH) + " ";
+            try
+            {
+                Date startDate = dayFormatter.parse(scheduledStartDate);
+                alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, startDate.getTime(), AlarmManager.INTERVAL_DAY*7, pendingItent);
+            }
+            catch(java.text.ParseException pEx)
+            {
+                pEx.printStackTrace();
+            }    */
+}
 
 }

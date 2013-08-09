@@ -1,6 +1,7 @@
 package com.parse.starter;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Criteria;
@@ -8,15 +9,16 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
-import com.parse.starter.R;
+import com.google.android.gms.maps.*;
+import com.google.android.gms.maps.model.LatLng;
 
 public class OutbreakMap extends Activity implements LocationListener {
-    private TextView latituteField;
-    private TextView longitudeField;
+
     private LocationManager locationManager;
     private String provider;
+    MapFragment mMapFragment;
+    GoogleMap googleMap;
 
 
     /** Called when the activity is first created. */
@@ -25,8 +27,6 @@ public class OutbreakMap extends Activity implements LocationListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.location);
-        latituteField = (TextView) findViewById(R.id.TextView02);
-        longitudeField = (TextView) findViewById(R.id.TextView04);
 
         // Get the location manager
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -35,14 +35,26 @@ public class OutbreakMap extends Activity implements LocationListener {
         Criteria criteria = new Criteria();
         provider = locationManager.getBestProvider(criteria, false);
         Location location = locationManager.getLastKnownLocation(provider);
+        mMapFragment = MapFragment.newInstance();
+        FragmentTransaction fragmentTransaction =
+                getFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.map, mMapFragment);
+        fragmentTransaction.commit();
+        setUpMapIfNeeded();
+        googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        CameraUpdate toMyLoc= CameraUpdateFactory.newLatLng(new LatLng(location.getLatitude(),location.getLongitude()));
+        CameraUpdate zoom=CameraUpdateFactory.zoomTo(15);
+        googleMap.moveCamera(toMyLoc);
+        googleMap.animateCamera(zoom);
+        GoogleMapOptions options = new GoogleMapOptions();
+        options.rotateGesturesEnabled(false).zoomGesturesEnabled(false);
 
         // Initialize the location fields
         if (location != null) {
             System.out.println("Provider " + provider + " has been selected.");
             onLocationChanged(location);
         } else {
-            latituteField.setText("Location not available");
-            longitudeField.setText("Location not available");
+
         }
         moveToPrescription();
 
@@ -66,8 +78,6 @@ public class OutbreakMap extends Activity implements LocationListener {
     public void onLocationChanged(Location location) {
         int lat = (int) (location.getLatitude());
         int lng = (int) (location.getLongitude());
-        latituteField.setText(String.valueOf(lat));
-        longitudeField.setText(String.valueOf(lng));
     }
 
     @Override
@@ -91,9 +101,21 @@ public class OutbreakMap extends Activity implements LocationListener {
 
     public void moveToPrescription(){
         Intent intent = new Intent(this,Prescription.class);
-        intent.putExtra("latitude",""+latituteField);
-        intent.putExtra("longitude",""+longitudeField);
         startActivity(intent);
-
     }
+
+    private void setUpMapIfNeeded() {
+        // Do a null check to confirm that we have not already instantiated the map.
+        if (googleMap == null) {
+            googleMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
+                    .getMap();
+            // Check if we were successful in obtaining the map.
+            if (googleMap != null) {
+                // The Map is verified. It is now safe to manipulate the map.
+
+            }
+        }
+    }
+
+
 }

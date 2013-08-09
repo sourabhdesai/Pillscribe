@@ -1,0 +1,33 @@
+Microsoft Windows [Version 6.2.9200]
+(c) 2012 Microsoft Corporation. All rights reserved.
+
+C:\Users\DESAI_628IL>"C:\Program Files\Java\jdk1.6.0_38\bin\keytool.exe" -list -
+v -alias androiddebugkey -keystore "C:\Users\DESAI_628IL\.android\debug.keystore
+" -storepass android -keypass android
+Alias name: androiddebugkey
+Creation date: Sep 18, 2012
+Entry type: PrivateKeyEntry
+Certificate chain length: 1
+Certificate[1]:
+Owner: CN=Android Debug, O=Android, C=US
+Issuer: CN=Android Debug, O=Android, C=US
+Serial number: 5828ed5f
+Valid from: Tue Sep 18 20:33:46 CDT 2012 until: Thu Sep 11 20:33:46 CDT 2042
+Certificate fingerprints:
+         MD5:  FD:E9:D5:FE:7E:80:25:E8:02:6A:D0:EB:D9:F0:EF:E9
+         SHA1: 84:70:CB:7F:73:38:31:80:16:72:28:52:CA:16:93:CC:16:A8:39:A8
+         Signature algorithm name: SHA256withRSA
+         Version: 3
+
+Extensions:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: C5 D4 38 DD BB BC ED 85   55 36 6A 00 39 22 51 8A  ..8.....U6j.9"Q.
+0010: 2E C6 73 DA                                        ..s.
+]
+]
+
+
+C:\Users\DESAI_628IL>

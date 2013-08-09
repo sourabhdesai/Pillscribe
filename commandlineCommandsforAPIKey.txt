@@ -1,0 +1,1 @@
+-list -v -alias androiddebugkey -keystore "C:\Users\DESAI_628IL\.android\debug.keystore" -storepass android -keypass android
